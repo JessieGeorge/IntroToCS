@@ -1,0 +1,145 @@
+Name: Jessie George
+
+Assignment 6
+------------
+
+Problem 1
+---------
+
+1. Selection Sort
+
+Given Array = M U E J R Q X B
+
+
+Array				Pass			Number of Comparisons
+-----				----			---------------------
+M U E J R Q B X			1			7
+M B E J R Q U X			2			6
+M B E J Q R U X			3			5
+M B E J Q R U X			4			4
+J B E M Q R U X 		5			3
+E B J M Q R U X			6			2	
+B E J M Q R U X			7			1
+
+
+2. Insertion Sort
+
+Given Array = M U E J R Q X B
+
+
+Array				Pass			Number of Comparisons (using Java short-circuit evaluation of &&)
+-----				----			---------------------
+M U E J R Q X B			1			1
+E M U J R Q X B			2			2
+E J M U R Q X B			3			3
+E J M R U Q X B			4			2
+E J M Q R U X B 		5			3
+E J M Q R U X B			6			1	
+B E J M Q R U X			7			7
+
+
+Problem 2
+---------
+
+a. Determine if 2 arrays contain the same elements
+--------------------------------------------------
+1. Algorithm
+Declare and initialize array A and array B.
+if the length of A is not equal to the length of B
+	Print "Arrays not equal"
+	return;
+send array A as an argument to the method selectionSort shown below
+send array B as an argument to the method selectionSort shown below
+send array A and B as arguments to the method checkEqual shown below, if the value returned is true, print "Arrays are equal" else print "Arrays are not equal"
+
+Algorithm for method selectionSort with the parameter array X (the parameter should be the same data type as array A and B). This method has return type void. It arranges array in ascending order.
+declare int lastPlace and initialize to one less than X.length
+for loop goes from lastPlace till greater than zero, each iteration decrements lastPlace by 1
+	declare int maxLoc and initialize to zero. This is used for location of maximum number(or letter depending on what data type the arrays are)
+	for loop where int j goes from 1 till less than equal to lastPlace, each iteration increments j by 1
+		if X[j] is greater than X[maxLoc]
+			maxLoc = j;
+	Swap the X[maxLoc] with X[lastPlace] by using a temp variable
+
+Algorithm for method checkEqual with parameters array A and array B. The method returns a boolean.
+for loop where int i goes from 0 till less than A.length, each iteration increments i by 1
+	if the value in A[i] is not equal to the value in B[i]
+		return false;
+return true;//this line is reached only if we are able to complete and exit the for loop
+
+2. Factors that influence run time
+Size of array A = n
+Size of array B = m
+
+3. Operations
+The nested loops in selectionSort method
+The for loop in checkEqual method
+
+4. Function n^2 + m^2 + n
+
+5. best case if the length of the two arrays are not the same then it will directly print not equal without going to the function calls. efficiency = 1
+   worst case if both arrays are really long and equal. efficiency = n^2 + m^2 + n
+
+6. big-O notation = O(n^2+m^2)
+
+b. Counting total number characters that have a duplicate within a string
+-------------------------------------------------------------------------
+1. Algorithm
+Declare and initialize a string s.
+Declare int sumRep to store the sum of repeating letters and initialize it to zero.
+Declare an array of ints named alph with dimension 26 (since there are 26 alphabets)
+for loop with the loop-control variable asciiValue going from 97 to 122. Each iteration increments asciiValue by 1. (since ASCII values of the letters a-z are 97-122)
+	for loop where integer i goes from 0 till less than the length of s. Increment i by 1 each iteration.
+		declare char ch and initialize to Character.toLowerCase(s.charAt(i))
+		if((char)asciiValue==ch)
+			alph[asciiValue-97]++; //so if there are three occurences of letter "a" in the string, then alph[0] = 3
+for loop where int k goes from 0 till less than 26. Increment k by 1 each iteration.
+	if(alph[k]>1) //meaning the letter occurs more than once in the string
+		sumRep += alph[k];
+Print sumRep.
+
+2. Factors that influence run time
+Length of string - l
+number of repeating characters - n
+
+3. Operations
+Nested for loops to check for alphabets
+For loop to calculate sumRep
+
+4. Function 26*l + 26
+
+5. best case if l=1. efficiency= 26 + 26 = 52
+   worst case if l is really long and all letters are repeated many times. efficiency = 26*l + 26
+
+6. Big-O notation = O(l)
+
+c. Finding an empty row in a 2-D array where empty is defined as an element with a 0 entry
+------------------------------------------------------------------------------------------
+1. Algorithm
+Declare a 2D array named a and initialize it.
+Declare sumRow and initialize it to zero. (Variable used to find the sum of the elements in a row)
+Declare boolean emptyRowPresent and initialize to false. (checks if the array has an empty row)
+for loop where int row goes from 0 till less than a.length. Increment row by 1 each iteration of loop.
+	for loop where int col goes from 0 till less than a[0].length. Increment col by 1 each iteration of loop.
+		Add the absolute value of the element at that row and column to sumRow and store in sumRow. i.e. sumRow += Math.abs(a.[row][col]);
+	if sumRow is equal to zero
+		Print "Empty row is "+row
+		emptyRowPresent = true;
+		break out of the loop
+	reinitialize sumRow to zero (i.e. empty the sum and start over for the next row. this line of code is reached only if sumRow wasn't zero and so it didn't break out of the loop)
+if(!emptyRowPresent) //meaning if emptyRowPresent is false
+	Print "No empty row"
+
+2. Factors that incluence run time
+Number of rows in array - r
+Number of columns in array - c
+
+3. Operation
+Nested loop to access the elements of the array
+
+4. Function r*c
+
+5. best case zeroeth row is empty. efficiency = 1
+   worst case no rows are empty. efficiency = r*c
+
+6. Big-O notation = O(rc)

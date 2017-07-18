@@ -1,0 +1,203 @@
+Name: Jessie George
+Assignment 3
+
+Problem 1 (compute tax)
+---------
+Test case 1:
+Input:
+income -3
+Expected output:
+User entered bad input.
+Actual output:
+User entered bad input.
+
+Test case 2:
+Input:
+income 0
+Expected output:
+User entered bad input.
+Actual output:
+User entered bad input.
+
+Test case 3:
+Input:
+income 8000
+Expected output:
+RESULT: 800.0
+Actual output:
+RESULT: 800.0
+
+Test case 4:
+Input:
+income 34000
+Expected output:
+RESULT: 4700.0
+Actual output:
+RESULT: 4700.0
+
+Test case 5:
+Input:
+income 82000
+Expected output:
+RESULT: 16700.0
+Actual output:
+RESULT: 16700.0
+
+Test case 6:
+Input:
+income 82001
+Expected output:
+RESULT: 16700.35
+Actual output:
+RESULT: 16700.35
+
+Problem 2 (Find two smallest numbers)
+---------
+Test case 1:
+Inputs:
+sentinel -1
+num -1
+Expected output:
+User entered bad input.
+Actual output:
+User entered bad input.
+
+Test case 2:
+Inputs:
+sentinel -1
+num 80
+num -1
+Expected output:
+User entered bad input.
+Actual output:
+User entered bad input.
+
+Test case 3:
+Inputs:
+sentinel -1
+num 80
+num 23
+num 10
+num -6
+num -1
+Expected output:
+RESULT: -6.0
+RESULT: 10.0
+Actual output:
+RESULT: -6.0
+RESULT: 10.0
+
+Test case 4:
+Inputs:
+sentinel -1
+num 34
+num 9
+num 100
+num 9
+num -1
+Expected output:
+RESULT: 9.0
+RESULT: 9.0
+Actual output:
+RESULT: 9.0
+RESULT: 9.0
+
+Test case 5:
+Inputs:
+sentinel -1
+num -3
+num 5
+num 0
+num -1
+Expected output:
+RESULT: -3.0
+RESULT: 0.0
+Actual output:
+RESULT: -3.0
+RESULT: 0.0
+
+Test case 6:
+Inputs:
+sentinel 20
+num 3
+num 4
+num 20
+Expected output:
+RESULT: 3.0
+RESULT: 4.0
+Actual output:
+RESULT: 3.0
+RESULT: 4.0
+
+Test case 7:
+Inputs:
+sentinel 90
+num 89
+num 91
+num 100
+num 89.5
+num 90
+Expected output:
+RESULT: 89.0
+RESULT: 89.5
+Actual output:
+RESULT: 89.0
+RESULT: 89.5
+
+Problem 3 (find nth prime number)
+---------
+Test case 1:
+Input:
+n 0
+Expected Output:
+User entered bad input.
+Actual Output:
+User entered bad input.
+
+Test case 2:
+Input:
+n -3
+Expected Output:
+User entered bad input.
+Actual Output:
+User entered bad input.
+
+Test case 3:
+Input:
+n 1
+Expected Output:
+RESULT: 2
+Actual Output:
+RESULT: 2
+
+Test case 4:
+Input:
+n 2
+Expected Output:
+RESULT: 3
+Actual Output:
+RESULT: 3
+
+Test case 5:
+Input:
+n 3
+Expected Output:
+RESULT: 5
+Actual Output:
+RESULT: 5
+
+Test case 6:
+Input:
+n 10
+Expected Output:
+RESULT: 29
+Actual Output:
+RESULT: 29
+
+Test case 7:
+Input:
+n 100
+Expected Output:
+RESULT: 541
+Actual Output:
+RESULT: 541

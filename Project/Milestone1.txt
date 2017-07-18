@@ -1,0 +1,205 @@
+Jessie George
+Project Milestone 1
+
+Part (a)
+--------
+Task: To determine if cell X is satisfied.
+
+Inputs:
+int n 		- the size of the grid (the grid will be n*n)
+char[][] grid 	- the grid represents the tissue sample. 
+		  It stores cells of type 'X', 'O' or '-' (where '-' is an empty cell)
+double t 	- the threshold given as percentage not decimal 
+	          (For example, 30% would be input as 30 not 0.3 Similarly 54.9% would be input as 54.9 not 5.49)
+int i 		- the row index of cell X in the grid
+int j 		- the column index of cell X in the grid
+
+Output:
+boolean value (i.e. true if X is satisfied. false if X is unsatisfied)
+
+Algorithm:
+1. Declare variable numLet of type int and intialize to zero. 
+   (numLet will be used to store the number of letters around cell X that are also equal to X. i.e. number of similar cells)
+2. Declare variable numBox of type int and initialize to zero.
+   (numBox will be used to store the number of filled boxes around cell X. i.e. number of X cells and O cells but not empty cells)
+3. Use a for loop in which the loop-control-variable int k goes from 1 to 8. We increment k each iteration of the loop. for(int k=1; k<=8; k++)
+   The loop is run 8 times because the maximum number of cells you can compare X with is 8. 
+   (i.e. if X is a central cell it is surrounded by 8 cells. If X is a corner cell, it is surrounded by 3 cells. If X is a side cell, it is surrounded by 5 cells.)
+   3.1. Declare variable newI of type int and initialize to i. 
+	(newI will store the row of a cell near X with which we will compare X)
+   3.2. Declare variable newJ of type int and initialize to j.
+        (newJ will store the column of a cell near X with which we will compare X)
+   3.3. To show the eight different permutations of newI and newJ we will use a switch statement based on the variable k that is switch(k).
+	In each case given below we will use the ++ or -- operator to modify the values of newI and newJ.
+        3.3.1. case 1: Increment newI then break
+        3.3.2. case 2: Decrement newI then break
+	3.3.3. case 3: Increment newJ then break
+	3.3.4. case 4: Decrement newJ then break
+	3.3.5. case 5: Increment newI, Increment newJ, then break
+	3.3.6. case 6: Decrement newI, Decrement newJ, then break
+	3.3.7. case 7: Increment newI, Decrement newJ, then break
+	3.3.8. case 8: Decrement newI, Increment newJ, then break
+   3.4. Now we must check if newI and newJ are invalid indexes using the if statement given below. The valid indexes range from 0 to n-1.
+	if(newI<0||newI>=n||newJ<0||newJ>=n)
+        3.4.1. continue; (i.e. if true, the indexes are invalid so don't bother comparing cells just continue)
+   3.5. if the value stored in grid[newI][newJ] is also X that means both cells are equal
+	3.5.1. Increment numLet
+	3.5.2. Increment numBox
+   3.6. else if the value stored in grid[newI][newJ] is equal to '-' it is an empty cell.
+        3.6.1. we use an empty block statement i.e. do nothing
+   3.7. else /*the only option left is that the grid[newI][newJ] stores 'O' 
+	      *This means the value in numLet should not change but the value in numBox should be increased by one as shown below*/
+	3.7.1. Increment numBox
+4. The for loop has now been exited. Declare a variable percNeigh of type double. 
+   percNeigh will store the percentage of neighbors that are also X.
+5. Intialize percNeigh as shown. percNeigh = (double)numLet/numBox*100.0;
+6. if percNeigh is greater than or equal to the threshold t, x is satisfied
+   6.1. Print true
+7. else x is not satisfied
+   7.1. Print false
+
+__________________________________________________________________________________________________________________________________________________________________________________
+Part (b)
+--------
+Task: To determine if entire tissue sample has been stabilized
+
+1. Declare a variable isStabilized of type boolean and intialize to true.
+   (If all cells in the grid are satisfied, it will remain true. If even one cell in the grid is unsatisfied, it will change to false).
+2. Use a for loop in which the loop-control-variable int i goes from 0 to less than n. We increment i each iteration of the loop. OUTERLOOP: for(int i=0; i<n; i++)
+   2.1. Use a nested for loop in which the loop-control-variable int j goes from 0 to less than n. We increment j each iteration of the loop. for(int j=0; j<n; j++)
+	2.1.1. Use the if statement given below to check if the cell at row i and column j is satisfied
+	       if(isSatisfied(grid[i][j], i, j, n, grid, t))
+	       isSatisfied is a method which returns a boolean value.
+	       isSatisfied has parameters (char g, int i, int j, int n, char[][] grid, double t). 
+	       The parameter char g is one cell in the grid i.e. char g will hold the value of the cell we want to check for satisfaction. char g will be 'X','O' or '-'.
+               The rest of the parameters have been explained in Part(a) under Inputs. 
+	       The method isSatisfied contains the entire logic of Part(a) with a few minor changes given below.
+	       In the beginning of the method we use an if-else statement.
+               if(g=='-') //g is empty
+		  return true; //since g is empty, we do not check for satisfaction
+               else //this means g is not empty. g is either X or O.
+	       {
+                /* Here we include the logic of Part(a) except instead of comparing neighboring cells with the letter X we compare them with the character g. 
+                 * To do this, simply replace X with g in Part(a).
+                 * After calculating percNeigh and comparing to threshold t, instead of printing true or false, return true or false*/
+               }
+               
+               2.1.1.1. we enter the empty body of the if statement iff the method isSatisfied has returned true, meaning the cell is satisfied
+
+        2.1.2. else it means the cell is unsatisfied
+	       2.1.2.1. isStabilized = false; //the boolean value isStabilized becomes false because a cell in the grid is unsatisfied
+	       2.1.2.2. break OUTERLOOP; //we know the tissue sample is not stabilized so we can break out of the loops
+
+3. After we exit both for loops, we use an if-else statement to print output.
+   if(isStabilized)
+      Print "There are no unsatisfied cells. The tissue sample is stabilized."
+   else
+      Print "There are unsatisfied cells. The tissue sample is not stabilized."
+               
+___________________________________________________________________________________________________________________________________________________________________________________      
+Part (c)
+--------
+Task: Move an unsatisfied X cell to a vacant location.
+
+Input:
+int row - the row of unsatisfied X cell in the grid
+int col - the column of unsatisfied X cell in the grid
+//for now we will assume that the row and col of X is given as input. In Part (d) we will show how to calculate it.
+char[][] grid - the grid represents the tissue sample
+
+Output:
+Print the relocation of unsatisfied X cell. 
+For example, "Unsatisfied X cell has moved from (3,2) to (1,4)"
+
+Algorithm:
+Note: this algorithm moves unsatisfied X cell to the first vacant cell in the grid and prints the relocation
+
+1. Use a for loop in which the loop-control-variable int i goes from 0 to less than n. We increment i each iteration of the loop. OUTERLOOP: for(int i=0; i<n; i++)
+   1.1. Use a nested for loop in which the loop-control-variable int j goes from 0 to less than n. We increment j each iteration of the loop. for(int j=0; j<n; j++)
+        1.1.1. if(grid[i][j]=='-') //it is a vacant cell in the grid. swap the unsatisfied X cell with this vacant cell
+	       1.1.1.1. grid[i][j] = grid[row][col];
+               1.1.1.2. grid[row][col] = '-';
+               1.1.1.3. break OUTERLOOP; //labelled break 
+2. Print output. i.e. System.out.println("Unsatisfied X cell has moved from ("+row+","+col+") to ("+i+","+j+")"); 
+
+______________________________________________________________________________________________________________________________________________________________________________________
+Part (d)
+--------
+
+Task: Describe operations needed to complete simulation
+
+In Part (c) we found out how to move one unsatisfied cell. 
+To complete the simulation, we must move all unsatisfied cells in one round and then check the tissue sample for stability again. 
+This continues until the tissue sample is stabilized and movement of cells stops.
+
+Operations needed to complete simulation are as follows:
+-We need a while(true) loop which we will break out of only if the tissue sample is stabilized. The while(true) loop contains the logic of part(a),(b),and(c).
+-We need an array to store the indexes of all unsatisfied cells
+-We need a for loop to go through the above array so that we can swap each unsatisfied cell with a vacant cell
+-We need a for loop to print the new tissue sample after each round of relocation
+-We need a counter to keep track of the number of rounds of relocation. We can print the value of this counter once the tissue is stabilized.
+
+Algorithm:
+1. int reloc = 0;
+2. while(true) 
+   2.1. Declare array unsatInd of type int to store the indexes of all unsatisfied cells. 
+	int[] unsatInd = new int[100]; //we assume that there are a maximum of 100 unsatisfied cells in a tissue
+   2.2. Declare variable len of type int and initialize to zero. 
+        This will be used to store the length of unsatInd[] that has been used for meaningful data not including the default values stored in unsatInd.
+   2.3. Check satisfaction of each cell in the tissue using the logic in Part(b). Make a minor change to Part (b) as shown below:
+        See the else statement in Part(b) section 2.1.2. Remove the break statement. The cell is unsatisfied so store the index in unsatInd[]
+        unsatInd[len]=i*10+j; //for explanation of i and j see Part(b) loop variables
+        /*For example if the first unsatisfied cell was in (3,2) it will be stored in unsatInd[0] as 32.
+         *if the second unsatisfied cell was in (4,1) it will be stored in unsatInd[1] as 41.*/  
+        len++;  //increment len to show the length of meaningful data in unsatInd[]
+   2.4. See Part(b) section 3. if the tissue is stabilized, print output, then break out of the while loop
+   2.5. else the tissue is not stabilized
+        2.5.1 Use a for loop in which the loop-control-variable int index goes from 0 to less than len. 
+              We increment index each iteration of the loop. for(int index=0; index<len; index++)
+              //NOTE: Now we will calculate row and col instead of just getting it as an input
+              2.5.1.1. int row = unsatInd[index]/10;
+              2.5.1.2. int col = unsatInd[index]%10;
+              //For example if the value 32 is stored in the array then it will break up such that row=3 and col=2
+              2.5.1.3. Use logic in Part(c) but don't print relocation of each unsatisfied cell because then the output will be too lengthy
+        2.5.2 Increment the variable reloc
+        2.5.3 Print the grid using nested loops. (This will show the new tissue sample after all unsatisfied cells have been relocated).
+3. After exiting the while loop, print "Number of tissue sample relocations: "+reloc
+
+___________________________________________________________________________________________________________________________________________________________________________________________
+Part (e)
+--------
+
+Bound on the number of rounds the algorithm will run:
+The algorithm can run infinitely. i.e. the tissue sample is never stabilized because at least one cell is always unsatisfied which needs infinite number of relocations.
+A few cases of infinite rounds are listed below.
+1. If there is only one O cell and many X cells. (or vice versa)
+2. If there is only one O cell and one X cell and all the rest are empty.
+3. If there is only one cell and all the rest are empty.
+4. If threshold t is too high. (example t=100 means that if any X cells are near any O cells, the algorithm will run infinitely)
+5. If n is extremely large. 
+6. If there are no empty cells
+7. If there are only empty cells
+8. If all cells are unsatisfied.
+   ex. t=40, n=2
+       grid = X O
+              O X
+       unsatisfied cells marked with asterisk = X*O*
+                                                O*X*
+
+What is the bound of the algorithm dependent on:
+1. The value of n 
+2. The value of t 
+3. The values in grid[][] (the number of spaces, Xs and Os affect the number of rounds)
+4. The number of unsatisfied cells to begin with
+5. The position of cells within the grid
+
+Predictions on how inputs affect how long the simulation will run:
+1. larger values of n COULD lead to longer simulations (more rounds needed to stabilize the large tissue sample)
+2. higher values of t COULD lead to longer simulations (less likely for cells to be satisfied)
+3. lesser number of similar cells COULD lead to longer simulations (for example, an X cell would have only few X neighbors it could attach to in order to become satisfied) 
+4. more number of unsatisfied cells COULD lead to longer simulations (more relocations to achieve stability)
+5. proximity of similar cells COULD lead to SHORTER simulations (if a cell is near its own kind then its more likely to be satisfied)
+
+However, these predictions are NOT blanket-rules. 
+For example, there are cases where one grid has more number of unsatisfied cells than another grid but still has lesser number of relocations required for stability.
+Thus, it is a combination of these factors that affect the length of the simulation.

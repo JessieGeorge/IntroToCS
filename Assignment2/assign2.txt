@@ -1,0 +1,147 @@
+Name: Jessie George
+RUID: 157000770
+
+Assignment 2
+
+Problem 1 (sum of two integers)
+---------
+
+Problem Analysis
+Inputs - User inputs two integers which are stored in integer variables num1 and num2 respectively.
+Output - Sum of num1 and num2 is stored in integer variable sum. The output is printed as "Sum: " followed by the value of sum.
+
+Test case 1:
+Inputs: 
+num1 10
+num2 20
+Expected output:
+Sum: 30
+Actual output:
+Sum: 30
+
+Test case 2:
+Inputs:
+num1 -3
+num2 -9
+Expected output:
+Sum: -12
+Actual output:
+Sum: -12
+
+Test case 3:
+Inputs:
+num1 8
+num2 -5
+Expected output:
+Sum: 3
+Actual output:
+Sum: 3
+
+Test case 4:
+Inputs:
+num1 19
+num2 0
+Expected output:
+Sum: 19
+Actual output:
+Sum: 19
+
+Test case 5:
+Inputs:
+num1 0
+num2 0
+Expected output:
+Sum: 0
+Actual output:
+Sum: 0
+
+Problem 2 (canonical-form of degree-3 polynomial given its roots)
+---------
+
+Problem Analysis
+Inputs - User input three roots which are stored in integer variables root1, root2, and root3 respectively.
+Output - Canonical-form of polynomial is stored in String variable pol. The output is print as "The polynomial is:" followed by the value of pol on the next line.
+
+Test case 1:
+Inputs: 
+root1 5
+root2 7
+root3 10
+Expected output:
+The polynomial is:
+x^3 -22x^2 + 155x -350
+Actual output:
+The polynomial is:
+x^3 -22x^2 + 155x -350
+
+Test case 2:
+Inputs: 
+root1 -20
+root2 -17
+root3 -2
+Expected output:
+The polynomial is:
+x^3 + 39x^2 + 414x + 680
+Actual output:
+The polynomial is:
+x^3 + 39x^2 + 414x + 680
+
+Test case 3:
+Inputs: 
+root1 -100
+root2 -34
+root3 5
+Expected output:
+The polynomial is:
+x^3 + 129x^2 + 2730x -17000
+Actual output:
+The polynomial is:
+x^3 + 129x^2 + 2730x -17000
+
+Test case 4:
+Inputs: 
+root1 -3
+root2 5
+root3 5
+Expected output:
+The polynomial is:
+x^3 -7x^2 -5x + 75
+Actual output:
+The polynomial is:
+x^3 -7x^2 -5x + 75
+
+Test case 5:
+Inputs: 
+root1 0
+root2 0
+root3 0
+Expected output:
+The polynomial is:
+x^3 
+Actual output:
+The polynomial is:
+x^3 
+
+Test case 6:
+Inputs: 
+root1 0
+root2 0
+root3 3
+Expected output:
+The polynomial is:
+x^3 -3x^2
+Actual output:
+The polynomial is:
+x^3 -3x^2
+
+Test case 7:
+Inputs: 
+root1 0
+root2 -4
+root3 3
+Expected output:
+The polynomial is:
+x^3 + 1x^2 -12x
+Actual output:
+The polynomial is:
+x^3 + 1x^2 -12x

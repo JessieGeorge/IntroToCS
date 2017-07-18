@@ -1,0 +1,178 @@
+Name: Jessie George
+Assignment 5
+
+Problem 1 (Translate English word to Pig Latin)
+---------
+Test case 1:
+Input: Hello
+Expected Output: elloHay
+Actual Output: elloHay
+
+Test case 2:
+Input: Apple
+Expected Output: Appleway
+Actual Output: Appleway
+
+Test case 3:
+Input: Question?
+Expected Output: User entered bad input.
+Actual Output: User entered bad input.
+
+Test case 4:
+Input: Sp ace
+Expected Output: User entered bad input.
+Actual Output: User entered bad input.
+
+Test case 5:
+Input: Digit98
+Expected Output: User entered bad input.
+Actual Output: User entered bad input.
+
+Test case 6:
+Input: -1
+Expected Output: User entered bad input.
+Actual Output: User entered bad input.
+
+Test case 7:
+Input: Weird$$..%
+Expected Output: User entered bad input.
+Actual Output: User entered bad input.
+
+Test case 8:
+Input: ChRisTmas
+Expected Output: hRisTmasCay
+Actual Output: hRisTmasCay
+
+Test case 9:
+Input: P
+Expected Output: Pay
+Actual Output: Pay
+
+Test case 10: //user hits enter without typing anything
+Input:
+Expected Output: User entered bad input.
+Actual Output: User entered bad input.
+
+Test case 11:
+Input: a
+Expected Output: away
+Actual Output: away
+
+Test case 12:
+Input: year
+Expected Output: earyay
+Actual Output: earyay
+
+Problem 2 (Count number of words with minimum length)
+---------
+Test case 1:
+Input: 
+s = Old MacDonald had a farm.
+minWordLen = 4
+Expected Output: 2
+Actual Output: 2
+
+Test case 2:
+Input: 
+s = Old MacDonald had a farm.
+minWordLen = -1
+Expected Output: User entered bad input.
+Actual Output: User entered bad input
+
+Test case 3:
+Input: 
+s = Old MacDonald had a farm.
+minWordLen = 1
+Expected Output: 5
+Actual Output: 5
+
+Test case 4:
+Input:
+s = Old MacDonald had a farm.
+minWordLen = 10
+Expected Output: 0
+Actual Output: 0
+
+Test case 5:
+Input: 
+s = This is a test. It contains a set of sentences.
+minWordLen = 3
+Expected Output: 5
+Actual Output: 5
+
+Test case 6:
+Input: 
+s = T#e Un^C0rN fl3w 0v3r t#e rAin--  bow!
+minWordLen = 3
+Expected Output: 5
+Actual Output: 5
+
+Test case 7:
+Input: 
+s = ###ee
+minWordLen = 3
+Expected Output: 0
+Actual Output: 0
+
+
+Problem 3 (Compress a string using RLE)
+---------
+Test case 1: 
+Input: qwwwwwwwwweeeeerrtyyyyyqqqqwEErTTT
+Expected Output: q9w5e2rt5y4qw2Er3T
+Actual Output: q9w5e2rt5y4qw2Er3T
+
+Test case 2: 
+Input: MMMjjRRR
+Expected Output: 3M2j3R
+Actual Output: 3M2j3R
+
+Test case 3: 
+Input: hhHkkLppO
+Expected Output: 2hH2kL2pO
+Actual Output: 2hH2kL2pO
+
+Test case 4: 
+Input: a
+Expected Output: a
+Actual Output: a
+
+Test case 5: 
+Input: att
+Expected Output: a2t
+Actual Output: a2t
+
+Test case 6: 
+Input: ###%%%%&&*
+Expected Output: 3#4%2&*
+Actual Output: 3#4%2&*
+
+Test case 7: 
+Input: Fruit  Loops
+Expected Output: Fruit2 L2ops
+Actual Output: Fruit2 L2ops
+
+Test case 8: 
+Input: mellow    yellow!!
+Expected Output: me2low4 ye2low2!
+Actual Output: me2low4 ye2low2!
+
+Test case 9: 
+Input: a##eeeE
+Expected Output: a2#3eE
+Actual Output: a2#3eE
+
+Test case 10: //User clicks enter without typing anything
+Input:
+Expected Output: User entered bad input.
+Actual Output: User entered bad input.
+
+Test case 11: 
+Input: 9op34
+Expected Output: User entered bad input.
+Actual Output: User entered bad input.
+
+Test case 12: 
+Input: aaAA
+Expected Output: 2a2A
+Actual Output: 2a2A
